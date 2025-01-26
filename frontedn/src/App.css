@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root {
+    /* --first : #f85c5c; */
+    --first: #FD752C;
+    /* --first : #0A0D28; */
+    /* --first : #2B2D4F; */
+    --second: #efccb3;
+    --third: #8B04FA;
+    --fourth: #1dee13;
+    --seventh: #f68345;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+/* App.css */

@@ -1,0 +1,616 @@
+.gmb_main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    /* background: radial-gradient(circle at center, #ec7f7f 0%, #F16767 100%); */
+    /* background-image: url("../../../assets/passenger_feedback/Blur3.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+    background-color: var(--first);
+}
+
+.gmb_map {
+    width: 70vw;
+    height: 100vh;
+    img {
+        height: 100vh;
+        width: 70vw;
+    }
+    padding: 20px;
+}
+
+.gmb_cards {
+    width: 30vw;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gmb_search {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+    input {
+        height: 40px;
+        width: 335px;
+        outline: 0;
+        border: 0;
+        background-color: #E8F0FE;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+}
+
+.gmb_but {
+    height: 100%;
+    width: 48px;
+    border-left: 2px solid white;
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    background-color: #27AE60;
+    color: white;
+    transition: .3s;
+}
+
+.gmb_but:hover{
+    background-color: #219653;
+}
+
+.gmb_inpbut {
+    height: 40px;
+    width: 335px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+.gmb_refresh {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    align-content: center;
+    border-radius: 50%;
+    background-color: #3498DB;
+    cursor: pointer;
+    transition: .3s;
+    color: white;
+}
+.gmb_refresh:hover{
+    background-color: #2980B9;
+}
+
+.gmb_centerbar {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ground_details {
+    display: flex;
+    width: 400px;
+    height: 80px;
+    justify-content: space-evenly;
+    align-items: end;
+    position: relative;
+    border-bottom: 3px solid rgb(99, 98, 98);
+
+    .ground {
+        height: 60px;
+        display: flex;
+        text-align: center;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        cursor: pointer;
+        color: black;
+        font-weight: 700;
+    }
+
+    .ground::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 5px;
+        background-color: white;
+        bottom: 0%;
+        border-radius: 10px;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+    }
+
+    .ground:hover::before {
+        opacity: 1;
+    }
+}
+
+.ground_details::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 5px;
+    background-color: var(--sixth);
+    opacity: .5;
+    bottom: 0%;
+    border-radius: 10px;
+}
+
+.ground.active::before {
+    opacity: 1;
+}
+
+
+.gmb_buslist {
+    height: 75vh;
+    overflow-y: auto;
+    padding: 0px 10px;
+    border-radius: 8px;
+}
+
+.gmb_buslist::-webkit-scrollbar {
+    width: 8px;
+}
+
+.gmb_buslist::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+.gmb_buscard {
+    padding: 15px;
+    height: 100px;
+    width: 400px;
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.driver_pic {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+    }
+}
+
+.driver_details {
+    height: 100px;
+    width: 200px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
+    .bus_no {
+        font-size: 26px;
+        font-weight: 900;
+    }
+
+    .driver_name {
+        font-size: 14px;
+    }
+
+    .ground_name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        align-content: center;
+        font-size: 14px;
+        gap: 8px;
+    }
+}
+
+.bus_but {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* border-left: 3px solid black; */
+    .bus_status {
+        height: 50px;
+        width: 100px;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        align-content: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height: 33px;
+            width: 65px;
+            position: absolute;
+            animation: none;
+        }
+    }
+
+    .get_directions {
+        height: 50px;
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .get_directions_but {
+            height: 35px;
+            width: 85px;
+            background-color: var(--first);
+            border-radius: 30px;
+            color: white;
+            text-align: center;
+            align-content: center;
+            font-weight: 800;
+            overflow: hidden;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1rem;
+            user-select: none;
+        }
+    }
+
+    .get_directions_but:hover img {
+        animation: left_to_right 3s linear 1;
+    }
+}
+
+@keyframes left_to_right {
+    from {
+        left: -70%;
+    }
+
+    to {
+        left: 120%;
+    }
+}
+
+@media only screen and (max-width: 1460px){
+    .gmb_map{
+        width: 60vw;
+    }
+    .gmb_cards{
+        width: 40vw;
+    }
+}
+@media only screen and (max-width: 1100px){
+    .gmb_map{
+        width: 55vw;
+    }
+    .gmb_cards{
+        width: 45vw;
+    }
+    .map-directions-container{
+        flex-direction: column;
+    }
+    .map-view,.directions-panel{
+        height: 50%;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 975px){
+    .gmb_map{
+        width: 50vw;
+    }
+    .gmb_cards{
+        width: 50vw;
+    }
+}
+@media only screen and (max-width: 880px){
+    .gmb_map{
+        width: 40vw;
+    }
+    .gmb_cards{
+        width: 60vw;
+    }
+}
+@media only screen and (max-width: 770px){
+    .gmb_map{
+        height: fit-content;
+    }
+    .gmb_main{
+        flex-wrap: wrap;
+    }
+    .gmb_map,.gmb_cards{
+        width: 100vw;
+    }
+    .gmb_search{
+        justify-content: center;
+        gap: 30px;
+    }
+}
+@media only screen and (max-width: 450px){
+    .map-container{
+        height: 150vh !important;
+    }
+    .gmb_search{
+        gap: 20px;
+    }
+    .gmb_inpbut,.gmb_but{
+        height: 50px;
+        input{
+            height: 50px;
+        }
+    }
+    .gmb_but{
+        width: 80px;
+    }
+    .gmb_refresh{
+        height: 50px;
+        width: 50px;
+    }
+    .gmb_buscard{
+        width: 360px;
+        padding:8px;
+        height: 120px;
+    }
+    .driver_pic {
+        height: 90px;
+        width: 90px;
+        justify-content: center;
+        img {
+            height: 75px;
+            width: 75px;
+        }
+    }
+    .driver_details{
+        gap: 10px;
+    }
+    .bus_but{
+        .get_directions{
+            .get_directions_but{
+                height: 90%;
+                width: 100%;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 410px){
+    .gmb_search{
+        gap: 10px;
+    }
+    .gmb_inpbut{
+        width: 280px;
+        input{
+            width: 250px;
+        }
+    }
+    .ground_details{
+        gap: 0px;
+        .ground{
+            font-size: 14px;
+        }
+    }
+    .gmb_buscard{
+        height: 160px;
+        width: 310px;
+        flex-wrap: wrap;
+    }
+    .driver_details{
+        .bus_no{
+            font-size: 22px;
+        }
+        .driver_name{
+            font-size: 14px;
+        }
+    }
+    .bus_but{
+        width: 100%;
+        height: 50px;
+        flex-direction: row;
+        .bus_status{
+            img{
+                height: 85%;
+                width: 75%;
+            }
+            width: 40%;
+        }
+        .get_directions{
+            width: 60%;
+            .get_directions_but{
+                width: 100%;
+                height: 80%;
+                font-size: 18px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 370px){
+    .ground_details{
+        justify-content: center;
+        gap: 10px;
+        .ground{
+            font-size: 12px;
+        }
+    }
+}
+@media only screen and (max-width: 350px){
+    .gmb_buscard{
+        width: 300px;
+    }
+    .driver_pic {
+        height: 70px;
+        width: 70px;
+        img {
+            height: 65px;
+            width: 65px;
+        }
+    }
+    .driver_details{
+        gap: 10px;
+    }
+}
+
+
+.map-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.map-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0px 0px 4px black;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 3px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 2px solid #bdc3c7;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    outline: none;
+}
+
+.input-field:focus {
+    border-color: #3498db;
+}
+
+.submit-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button:hover {
+    background-color: #2980b9;
+}
+
+.map-directions-container {
+    display: flex;
+    gap: 15px;
+    flex-grow: 1;
+    height: 85svh;
+}
+
+.map-view {
+    flex: 2;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.directions-panel {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.directions-panel h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.directions-panel ol {
+    padding-left: 20px;
+}
+
+.directions-panel li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* Custom map styling */
+.map-view [class$="map"] {
+    filter:
+        saturate(1.2) hue-rotate(5deg);
+}
+
+.map-view [class$="map"] [class$="water"] {
+    fill: #b9d3c2;
+}
+
+.map-view [class$="map"] [class$="landscape"] {
+    fill: #dfd2ae;
+}
+
+.map-view [class$="map"] [class$="poi-park"] {
+    fill: #a5b076;
+}
+
+.map-view [class$="map"] [class$="road-highway"] {
+    fill: #f8c967;
+}
+
+.map-view [class$="map"] [class$="road-arterial"] {
+    fill: #fdfcf8;
+}
+
+.map-view [class$="map"] [class$="transit-line"] {
+    fill: #dfd2ae;
+}
+

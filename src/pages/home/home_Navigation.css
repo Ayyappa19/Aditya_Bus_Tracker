@@ -1,0 +1,113 @@
+
+  h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0 0 1rem 0;
+    padding: 0;
+  }
+  ol, ul {
+    list-style-type: none;
+  }
+  .Home_mobile_navigation {
+    position: fixed;
+    height: 70px;
+    background: #DFDFDF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    bottom: 0px;
+    display: none;
+  }
+  .Home_mobile_navigation ul {
+    display: flex;
+    width: 350px;
+  }
+  .Home_mobile_navigation ul li {
+    position: relative;
+    width: 70px;
+    height: 70px;
+  }
+  .Home_mobile_navigation ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    top: 15%;
+  }
+  .Home_mobile_navigation ul li a .Mobile_icon {
+    line-height: 75px;
+    font-size: 1.5em;
+    transition: 0.5s;
+    color: var(--clr);
+  }
+  .Home_mobile_navigation ul li a .Mobile_icon img{
+    width: 35px;
+    height: 35px;
+  }
+  .Home_mobile_navigation ul li.active a .Mobile_icon {
+    transform: translateY(-25px);
+  }
+  .Home_mobile_navigation ul li a .text {
+    position: absolute;
+    color: black;
+    font-weight: 400;
+    font-size: 1.1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .Home_mobile_navigation ul li.active a .text {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+  .home_indicator {
+    position: absolute;
+    top: -50%;
+    width: 70px;
+    height: 70px;
+    background: -webkit-linear-gradient(25deg, var(--first), var(--first));
+    border-radius: 50%;
+    border: 6px solid var(--clr);
+    transition: 0.5s;
+    box-shadow: 0px 0px 8px black;
+    z-index: -1;
+  }
+  @media screen and (max-width: 1465px){
+    .Home_mobile_navigation{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 500px){
+    .Home_mobile_navigation{
+      width: 100svw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom: 0px;
+      position: fixed;
+      z-index: 5;
+    }
+  }
+  @media screen and (max-width: 376px){
+    .Home_mobile_navigation{
+      width: 375px;
+    }
+    .Home_mobile_navigation ul li a .text {
+      font-size: 15px;
+    }
+  }
+  @media screen and (max-width: 321px){
+    .Home_mobile_navigation{
+      width: 317px;
+    }
+    .Home_mobile_navigation ul li a .text {
+      font-size: 13px;
+    }
+  }
+  

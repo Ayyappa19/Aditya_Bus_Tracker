@@ -1,0 +1,184 @@
+/* Container Styling */
+.pf_container {
+    min-height: 100vh;
+    display: flex;
+    background-image: url("../../assets/passenger_feedback/Blur3.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-color: var(--first); */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* padding: 20px; */
+    color: white;
+}
+
+.pf_container::before {
+    content: '';
+    /* background-color: rgba(30, 62, 98, 0.5); Dark overlay for readability */
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* Feedback Form Container */
+.pf_feedback-form-container {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    /* background-color: rgba(133, 88, 111, 0.7); Semi-transparent background */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+
+/* Headings */
+.pf_h2 {
+    text-align: center;
+    color: white;
+    font-size: 32px;
+}
+
+.pf_h4 {
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.pf_feedback-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.pf_form-group {
+    margin-bottom: 10px;
+}
+
+.pf_form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    display: block;
+    color: white;
+}
+
+
+.pf_form-group input[type=number]::-webkit-inner-spin-button, 
+.pf_form-group input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+
+.pf_form-group input, .pf_form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: black;
+    font-size: 18px;
+    background-color: #E8F0FE;
+}
+
+.pf_form-group input:focus,
+.pf_form-group textarea:focus {
+    border-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(11, 11, 11, 0.5);
+}
+
+.pf_form-group textarea {
+    resize: none;
+    height: 100px;
+}
+
+.pf_submit-btn {
+    padding: 10px;
+    background-color:var(--first);
+    color: white;
+    border: none;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 40px;
+}
+
+.pf_submit-btn:hover {
+    background-color: black;
+    border: 1px solid #10375C;
+    color: white;
+}
+
+.pf_form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: black;
+    background-color: #E8F0FE;
+}
+
+.pf_form-group select:focus {
+    border-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .pf_feedback-form-container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .pf_h2 {
+        font-size: 28px;
+    }
+
+    .pf_h4 {
+        font-size: 14px;
+    }
+
+    .pf_form-group input,
+    .pf_form-group textarea {
+        font-size: 14px;
+    }
+
+    .pf_submit-btn {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pf_container {
+        padding: 16px;
+    }
+
+    .pf_feedback-form-container {
+        max-width: 100%;
+        height: 650px;
+    }
+
+    .pf_form-group{
+        margin: 10px 0px;
+    }
+    .pf_h2 {
+        font-size: 24px;
+    }
+
+    .pf_h4 {
+        font-size: 12px;
+    }
+
+    .pf_submit-btn {
+        font-size: 18px;
+        padding: 8px;
+    }
+}

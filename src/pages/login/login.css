@@ -1,0 +1,923 @@
+body{
+  font-family: "Poppins",sans-serif;
+  overflow: hidden;
+ }
+ .LoginInput{
+    font-family: "Poppins",sans-serif;
+ }
+ .poojiloginContainer{
+    position:relative;
+    width:100%;
+     background-color:white ; 
+    height: 100svh;
+    overflow: hidden;
+ }
+ .loginform.sign-up-form {
+  opacity: 0;
+  z-index: 1;
+}
+.poojisignin-signup {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 75%;
+  width: 100%;
+  transition: 1s 0.7s ease-in-out;
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 5;
+} 
+.loginform.sign-in-form {
+  z-index: 2;
+}
+  .poojiforms-container{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+ }
+ .loginform{
+   display:flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   padding:0 5rem;
+   transition:all 0.2s 0.7s;
+   overflow: hidden;
+   grid-column: 1/2;
+   grid-row: 1/2;
+}
+.poojititle {
+  font-size: 2.2rem;
+  color:var(--first);
+  margin-bottom: 10px;
+}
+.poojititle1 {
+  font-size: 2.2rem;
+  color:var(--first);
+  margin-bottom: 10px;
+}
+.poojiinput-field {
+  width: 380px;
+  background-color:#f0f0f0;
+  margin: 10px 0;
+  height: 55px;
+  border-radius: 55px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  padding: 0 0.4rem;
+  position: relative;
+  overflow: visible;
+}
+.poojiinput-field i {
+  text-align: center;
+  line-height: 55px;
+  color: #e3804b;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+.poojiinput-field input {
+  background: none;
+  outline: none;
+  border: none;
+  line-height: 1;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color:#333;
+  z-index: 0;
+}
+.login_forgot{
+  display:flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.login_forgot label input{
+  accent-color: #fff;
+  margin-right: 4px;
+}
+.login_forgot a{
+  margin-left: 100px;
+  text-decoration: none;
+}
+.login_forgot a:hover{
+  text-decoration: underline;
+}
+.login_signup{
+  font-size: 15px;
+  text-align: center;
+  margin: 20px 0 15px;
+}
+.login_signup p a:hover{
+  text-decoration: underline;
+}
+.poojiinput-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+.poojiinput-field span {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  transform: translateY(-50%);
+  background-color:transparent;
+  font-size: 1.1rem;
+  color: #aaa;
+  transition: 0.3s ease-in-out;
+  pointer-events: none;
+}
+.poojiinput-field input:focus + span
+{
+  top:0px;
+  left:40px;
+  font-size: 0.9rem;
+  color: var(--first);
+  background-color:white;
+  padding: 0 5px;
+  width:fit-content;
+  z-index: 2;
+}
+span.fill{
+  top:0px;
+  left:40px;
+  font-size: 0.9rem;
+  color: var(--first);
+  background-color:white;
+  padding: 0 5px;
+  width:fit-content;
+  z-index: 2;
+
+}
+.btn {
+  width: 150px;
+  background-color: var(--first);
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.poojierror-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+.poojierror-message1 {
+  color: green;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+.eye-icon {
+  position: absolute;
+  right: 20px;
+  top: 55%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  font-size: 1.6rem;
+}
+.btn:hover {
+  background-color: #4d84e2;
+}
+.poojipanels-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.btn.transparent {
+  margin: 0;
+  background: none;
+  border: 2px solid #fff;
+  width: 130px;
+  height: 41px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.poojiloginContainer::before {
+  content: "";
+  position: absolute;
+  height: 2000px;
+  width: 2000px;
+  top: -10%;
+  right: 48%;
+  transform: translateY(-50%);
+  background-image: linear-gradient(-45deg, var(--first) 0%,#e15a12 100%);
+  transition: 1.8s ease-in-out;
+  border-radius: 50%;
+  z-index: 6;
+}
+.poojipanel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  text-align: center;
+  z-index: 6;
+}
+.poojileft-panel {
+  pointer-events: all;
+  padding: 3rem 17% 2rem 12%;
+}
+.poojiright-panel {
+  pointer-events: none;
+  padding: 3rem 12% 2rem 17%;
+}
+.poojipanel .content {
+  color: #fff;
+  transition: transform 0.9s ease-in-out;
+  transition-delay: 0.6s;
+}
+.poojiright-panel .content {
+  transform: translateX(800px);
+}
+.poojiloginContainer.sign-up-mode::before {
+  transform: translate(100%, -50%);
+  right: 52%;
+}
+.poojiloginContainer.sign-up-mode .poojileft-panel .content {
+  transform: translateX(-800px);
+}
+.poojiloginContainer.sign-up-mode .poojisignin-signup {
+  left: 25%;
+}
+.poojiloginContainer.sign-up-mode .loginform.sign-up-form {
+  opacity: 1;
+  z-index: 2;
+}
+.poojiloginContainer.sign-up-mode .loginform.sign-in-form {
+  opacity: 0;
+  z-index: 1;
+}
+.poojiloginContainer.sign-up-mode .poojiright-panel .content {
+  transform: translateX(0%);
+}
+.poojiloginContainer.sign-up-mode .poojileft-panel {
+  pointer-events: none;
+}
+.poojiloginContainer.sign-up-mode .poojiright-panel {
+  pointer-events: all;
+}
+.poojiloginContainer.forgot-mode::before {
+  transform: translate(100%, -50%);
+  right: 52%;
+}
+.poojiloginContainer.forgot-mode .poojileft-panel .content {
+  transform: translateX(-800px);
+}
+.poojiloginContainer.forgot-mode .poojisignin-signup {
+  left: 25%;
+}
+.poojiloginContainer.forgot-mode .loginform.sign-in-form {
+  opacity: 0;
+  z-index: 1;
+}
+.poojiloginContainer.forgot-mode .loginform.forgot-form {
+  opacity: 1;
+  z-index: 2;
+}
+.poojiloginContainer.forgot-mode .poojiright-panel .content {
+  transform: translateX(0%);
+}
+.poojiloginContainer.forgot-mode .poojileft-panel {
+  pointer-events:none;
+}
+.poojiloginContainer.forgot-mode .poojiright-panel {
+  pointer-events:all;
+}
+.loginform.forgot-form {
+  opacity: 0;
+  z-index: 1;
+}
+.poojiloginContainer.otp-mode::before {
+  height: 2000px;
+  width: 2000px;
+  top: -10%;
+  right: 48%;
+  transform: translateY(-50%);
+}
+.poojiloginContainer.otp-mode .poojisignin-signup{
+  left: 58%;
+}
+.poojiloginContainer.otp-mode .loginform.forgot-form {
+  opacity: 0;
+  z-index: 1;
+}
+.poojiloginContainer.otp-mode .loginform.sign-up-form {
+  opacity: 0;
+  z-index: 1;
+}
+.poojiloginContainer .loginform.otp-form {
+  opacity: 1;
+  z-index: 2;
+}
+.poojiloginContainer.otp-mode .poojileft-panel {
+  pointer-events:all;
+}
+.poojiloginContainer.otp-mode .poojiright-panel .content {
+  transform: translateX(0%);
+}
+.poojiloginContainer.otp-mode .poojiright-panel {
+  pointer-events:none;
+}
+.loginform.otp-form {
+  opacity: 0;
+  z-index: 1;  
+}
+.poojiloginContainer.verify-mode::before {
+  height: 2000px;
+  width: 2000px;
+  top: -10%;
+  right: 48%;
+  transform: translateY(-50%);
+}
+.poojiloginContainer.verify-mode .poojisignin-signup{
+  left: 58%;
+}
+.poojiloginContainer.verify-mode .loginform.forgot-form {
+  opacity: 0;
+  z-index: 1;
+}
+.poojiloginContainer.verify-mode .loginform.sign-up-form {
+  opacity: 0;
+  z-index: 1;
+}
+.poojiloginContainer .loginform.verify-form {
+  opacity: 1;
+  z-index: 2;
+}
+.poojiloginContainer.verify-mode .poojileft-panel {
+  pointer-events:all;
+}
+.poojiloginContainer.verify-mode .poojiright-panel .content {
+  transform: translateX(0%);
+}
+.poojiloginContainer.verify-mode .poojiright-panel {
+  pointer-events:none;
+}
+.loginform.verify-form {
+  opacity: 0;
+  z-index: 1; 
+}
+.poojiloginContainer.change-mode::before {
+  transform: translate(100%, -50%);
+  right: 52%;
+}
+.poojiloginContainer.change-mode .poojileft-panel .content {
+  transform: translateX(800px);
+}
+.poojiloginContainer.change-mode .poojisignin-signup {
+  height:120%;
+  left: 42%;
+}
+.poojiloginContainer.change-mode .loginform.change-form {
+  opacity: 1;
+  z-index: 2;
+}
+.poojiloginContainer.change-mode .loginform.otp-form {
+  opacity: 0;
+  z-index: 1;
+}
+.poojiloginContainer.change-mode .poojiright-panel .content {
+  transform: translateX(0%);
+}
+.poojiloginContainer.change-mode .poojileft-panel {
+  pointer-events: none;
+}
+.poojiloginContainer.change-mode .poojiright-panel {
+  pointer-events: all;
+}
+.forgot-form a{
+  margin-left: 230px;
+  text-decoration: none;
+}
+.moving-image {
+  position: absolute;
+  top: 50%; 
+  left: -25%;
+  transform: translateY(-50%);
+  transition: left 1s;
+  width:400px;
+  height:400px;
+  animation:slideLeft2 1s linear forwards;
+}
+.animate-image {
+  animation: slideIn 2s linear forwards;
+}
+.moving-image-right {
+  position: absolute;
+  top: 50%; 
+  right:-25%;
+  transform: translateY(-50%);
+  transition: right 1s;
+  width:400px;
+  height:400px;
+  animation:slideLeft1 1s linear forwards;
+}
+.animate-right {
+  animation: slideLeft 2s linear forwards;
+}
+@keyframes slideLeft2{
+  0%{
+    left:-25%;
+  }
+  100%{
+    left:10%;
+  }
+}
+@keyframes slideLeft1{
+  0%{
+    right:-25%;
+  }
+  100%{
+    right:10%;
+  }
+}
+@keyframes slideIn {
+  0% {
+    left: 15%; 
+  }
+  50% {
+    left: 50%; 
+  }
+  100%{
+    left:100%;
+  }
+  
+}
+@keyframes slideLeft {
+  0% {
+    right: 10%; 
+  }
+  50% {
+    right: 50%; 
+  }
+  100%{
+    right:100%;
+  }
+  
+}
+
+
+ 
+@media (max-width:1000px){
+  .login_forgot{
+    display:flex;
+    justify-content: space-between;
+    font-size: 12px;
+    text-wrap: nowrap;
+  }
+  .login_forgot a{
+    margin-left: 80px;
+    text-decoration: none;
+  }
+
+}
+.loginform.otp-form{
+  font-size: 19px;
+  color:var(--first);
+}
+.loginform.verify-form{
+  font-size: 19px;
+  color:var(--first);
+}
+@media (max-width: 870px) {
+  .poojiloginContainer {
+    min-height: 800px;
+    height: 100svh;
+  }
+  .poojisignin-signup {
+    width: 100%;
+    top: 80%;
+    transform: translate(-50%, -100%);
+    transition: 1s 0.8s ease-in-out;
+  }
+  .poojisignin-signup,
+  .poojiloginContainer.sign-up-mode .poojisignin-signup {
+    left: 50%;
+  }
+  .poojipanels-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
+  }
+  .login_forgot{
+    display:flex;
+    justify-content: space-between;
+    font-size: 14px;  
+  }
+  .login_forgot a{
+    margin-left: 80px;
+    text-decoration: none;
+  }
+  .poojipanel {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2.5rem 8%;
+    grid-column: 1 / 2;
+  }
+  .poojiright-panel {
+    grid-row: 3 / 4;
+  }
+  .poojileft-panel {
+    grid-row: 1 / 2;
+  }
+  .poojipanel .content {
+    padding-right: 15%;
+    transition: transform 0.9s ease-in-out;
+    transition-delay: 0.8s;
+  }
+  .poojiloginContainer::before {
+    width: 1500px;
+    height: 1500px;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 72%;
+    right: initial;
+    top: initial;
+    transition: 2s ease-in-out;
+  }
+  .poojiloginContainer.sign-up-mode::before {
+    transform: translate(-50%, 100%);
+    bottom: 45%;
+    right: initial;
+  }
+  .poojiloginContainer.sign-up-mode .poojileft-panel .moving-image,
+  .poojiloginContainer.sign-up-mode .poojileft-panel .content {
+    transform: translateY(-300px);
+  }
+  .poojiloginContainer.sign-up-mode .poojiright-panel .image,
+  .poojiloginContainer.sign-up-mode .poojiright-panel .content {
+    transform: translateY(0px);
+  }
+  .poojiright-panel .image,
+  .poojiright-panel .content {
+    transform: translateY(300px);
+  }
+  .poojiloginContainer.sign-up-mode .poojisignin-signup {
+    top: 5%;
+    transform: translate(-50%, 0);
+  }
+  .poojisignin-signup,
+  .poojiloginContainer.forgot-mode .poojisignin-signup {
+    left: 50%;
+  }
+  .poojiloginContainer.forgot-mode::before {
+    transform: translate(-50%, 100%);
+    bottom: 45%;
+  }
+  .poojiloginContainer.forgot-mode .poojileft-panel .moving-image,
+  .poojiloginContainer.forgot-mode .poojileft-panel .content {
+    transform: translateY(-300px);
+  }
+  .poojiloginContainer.forgot-mode .poojiright-panel .moving-image,
+  .poojiloginContainer.forgot-mode .poojiright-panel .content {
+    transform: translateY(0px);
+  }
+  .poojiloginContainer.forgot-mode .poojisignin-signup {
+    top: 5%;
+    transform: translate(-50%, 0);
+  }
+  .poojititle1 {
+    font-size: 2.0rem;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  .poojiloginContainer.otp-mode::before {
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 70%;
+    right: initial;
+    top: initial;
+    transition: 2s ease-in-out;
+  }
+  .poojiloginContainer.otp-mode .poojisignin-signup {
+    left: 50%;
+    bottom:11%;
+  }
+  .poojiloginContainer.otp-mode .moving-image{
+    top:45%;
+  }
+  .poojiloginContainer.verify-mode::before {
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 70%;
+    right: initial;
+    top: initial;
+    transition: 2s ease-in-out;
+  }
+  .poojiloginContainer.verify-mode .poojisignin-signup {
+    left: 50%;
+    bottom:11%;
+  }
+  .poojiloginContainer.verify-mode .moving-image{
+    top:45%;
+  }
+  .poojisignin-signup,
+  .poojiloginContainer.change-mode .poojisignin-signup {
+    left: 50%;
+  }
+  .poojiloginContainer.change-mode::before {
+    transform: translate(-50%, 100%);
+    bottom: 45%;
+  }
+  .poojiloginContainer.change-mode .poojileft-panel .moving-image,
+  .poojiloginContainer.change-mode .poojileft-panel .content {
+    transform: translateY(-300px);
+  }
+  .poojiloginContainer.change-mode .poojiright-panel .moving-image,
+  .poojiloginContainer.change-mode .poojiright-panel .content {
+    transform: translateY(0px);
+  }
+  .poojiloginContainer.change-mode .poojisignin-signup {
+    top: -15%;
+    transform: translate(-50%, 0);
+  }
+  .moving-image {
+    position: absolute;
+    top: 20%; 
+    left: -25%;
+    transform: translateY(-50%);
+    transition: left 1s;
+    width:300px;
+    height:300px;
+    animation:slideLeft2 1s linear forwards;
+  }
+  .moving-image-right {
+    position: absolute;
+    top: 70%; 
+    right:-25%;
+    transform: translateY(-50%);
+    transition: right 1s;
+    width:300px;
+    height:300px;
+    animation:slideLeft1 1s linear forwards;
+  }
+  .animate-image {
+    animation: slideIn 1.5s linear forwards;
+  }
+  .animate-right {
+    animation: slideLeft 1.5s linear forwards;
+  }
+  @keyframes slideIn {
+    0% {
+      top:40%;
+      left: 10%; 
+    }
+    50% {
+      top:40%;
+      left: 50%; 
+    }
+    100%{
+      top:40%;
+      left:100%;
+    }   
+  }
+  @keyframes slideLeft {
+    0% {
+      right: 10%; 
+   }
+    50% {
+      right: 50%; 
+    }
+    100%{
+      right:100%;
+    } 
+  }
+}
+@media (max-width: 570px) {
+  .poojisignin-signup {
+    top: 80%;
+    z-index: 5;
+  } 
+ .login_forgot{
+    display:flex;
+    justify-content: space-between;
+    font-size: 13px; 
+  }
+  .login_forgot a{
+    margin-left: 80px;
+    text-decoration: none;
+  }
+  .forgot-form a{
+    margin-left: 350px;
+    width:100%;
+    text-decoration: none;
+  }
+  .poojititle1 {
+    font-size: 1.45rem;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  .image {
+    display: none;
+  }
+  .poojiloginContainer {
+    padding: 1.5rem;
+  }
+  .poojiloginContainer::before {
+    bottom: 72%;
+    left: 50%;
+  }
+  .poojiloginContainer.sign-up-mode::before {
+    bottom: 38%;
+    left: 50%;
+  }
+  .poojiloginContainer.forgot-mode::before {
+    bottom: 45%;
+    left: 50%;
+  }
+  .poojiloginContainer.otp-mode::before {
+    bottom: 72%;
+    left: 50%;
+  }
+  .poojiloginContainer.verify-mode::before {
+    bottom: 72%;
+    left: 50%;
+  }
+  .poojiloginContainer.change-mode::before {
+    bottom: 45%;
+    left: 50%;
+  }
+  .moving-image {
+    position: absolute;
+    top: 20%; 
+    left: -30%;
+    transform: translateY(-50%);
+    transition: left 1s;
+    width:250px;
+    height:250px;
+    animation:slideLeft2 0.8s linear forwards;
+  }
+  .animate-image {
+    animation: slideIn 1.5s linear forwards;
+  }
+  .moving-image-right {
+    position: absolute;
+    top: 70%; 
+    right:-25%;
+    transform: translateY(-50%);
+    transition: right 1s;
+    width:250px;
+    height:250px;
+    animation:slideLeft1 0.8s linear forwards;
+  }
+  .animate-right {
+    animation: slideLeft 1.5s linear forwards;
+  }
+  @keyframes slideIn {
+    0% {
+      top:40%;
+      left: 10%; 
+    }
+    50% {
+      top:40%;
+
+      left: 50%; 
+    }
+    100%{
+      top:40%;
+      left:100%;
+    } 
+  }
+  @keyframes slideLeft2{
+    0%{
+      left:-25%;
+    }
+    100%{
+      left:5%;
+    }
+  }
+  @keyframes slideLeft1{
+    0%{
+      right:-25%;
+    }
+    100%{
+      right:5%;
+    }
+  }
+}
+@media (max-width:430px){
+  .login_forgot{
+    justify-content: space-between;
+    width:320px;
+  }
+  .loginform.otp-form p{
+    width:110%;
+    font-size: 16px;
+    text-align: center;
+    color:var(--first);
+  }
+  .loginform.verify-form p{
+    width:110%;
+    font-size: 16px;
+    text-align: center;
+    color:var(--first);
+  }
+  .poojierror-message {
+    width:130%;
+    color: red;
+    text-align: center;
+    font-size: 0.7rem;
+    margin-top: 5px;
+  } 
+  .poojierror-message1{
+    width:130%;
+    color: green;
+    text-align: center;
+    font-size: 0.7rem;
+    margin-top: 5px;
+  }
+}
+@media (max-width:395px){
+  .poojiinput-field {
+    width: 320px;
+  }
+  .login_signup{
+    font-size: 13px;
+    text-align: center;
+  }
+  .forgot-form a{
+    margin-left: 250px;
+    width:100%;
+    text-decoration: none;
+  }
+  .poojierror-message {
+    width:140%;
+    color: red;
+    text-align: center;
+    font-size: 0.63rem;
+    margin-top: 5px;
+  }
+  .poojierror-message1 {
+    width:140%;
+    color: green;
+    text-align: center;
+    font-size: 0.63rem;
+    margin-top: 5px;
+  }
+}
+@media (max-width:355px){  
+  .poojiinput-field {
+    width: 300px;
+  }
+  .login_forgot{   
+    width:290px;
+    font-size: 11px;  
+  }
+  .forgot-form a{
+    margin-left: 200px;
+    width:100%;
+    text-decoration: none;
+  }
+  .loginform.otp-form p{
+    color:var(--first);
+   font-size: 15px;
+   width:140%;
+  }
+  .loginform.verify-form p{
+    color:var(--first);
+   font-size: 15px;
+   width:140%;
+  }
+  .login_signup{
+    font-size: 10px !important;
+     margin:0;
+  }
+   .poojititle1{
+    font-size:17px;
+  }  
+  .poojierror-message {
+    width:180%;
+    color: red;
+    font-size: 0.6rem;
+    text-align: center;
+    margin-top: 5px;
+  }
+  .poojierror-message1 {
+    width:180%;
+    color: green;
+    font-size: 0.6rem;
+    text-align: center;
+    margin-top: 5px;
+  }
+  .moving-image {
+    position: absolute;
+    top: 20%; 
+    left: 20%;
+    transform: translateY(-50%);
+    transition: top 1s;
+    width:200px;
+    height:200px;
+  }
+}
+
+

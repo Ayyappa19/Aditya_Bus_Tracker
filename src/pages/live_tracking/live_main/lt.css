@@ -1,0 +1,469 @@
+.lt_main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    /* background: radial-gradient(circle at center, #ec7f7f 0%, #F16767 100%); */
+    background-color: var(--first);
+}
+
+.lt_main_map {
+    width: 70vw;
+    height: 100vh;
+    img {
+        height: 100vh;
+        width: 70vw;
+    }
+}
+
+.lt_cards {
+    width: 30vw;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lt_search {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+    input {
+        height: 40px;
+        width: 335px;
+        outline: 0;
+        border: 0;
+        background-color: #E8F0FE;
+        padding-left: 10px;
+        font-size: 20px;
+    }
+}
+
+.lt_but {
+    height: 100%;
+    width: 48px;
+    border-left: 2px solid white;
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    background-color: #27AE60;
+    color: white;
+    transition: .3s;
+}
+
+.lt_but:hover{
+    background-color: #219653;
+}
+
+.lt_inpbut {
+    height: 40px;
+    width: 335px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+.lt_refresh {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    align-content: center;
+    border-radius: 50%;
+    background-color: #3498DB;
+    cursor: pointer;
+    transition: .3s;
+    color: white;
+}
+.lt_refresh:hover{
+    background-color: #2980B9;
+}
+
+.lt_centerbar {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lt_ground_details {
+    display: flex;
+    width: 400px;
+    height: 80px;
+    justify-content: space-evenly;
+    align-items: end;
+    position: relative;
+
+    .lt_ground {
+        height: 60px;
+        display: flex;
+        text-align: center;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        cursor: pointer;
+        color: black;
+        font-weight: 700;
+    }
+
+    .lt_ground::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 5px;
+        background-color: white;
+        bottom: 0%;
+        border-radius: 10px;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+    }
+
+    .lt_ground:hover::before {
+        opacity: 1;
+    }
+}
+
+.lt_ground_details::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 5px;
+    background-color: var(--sixth);
+    opacity: .5;
+    bottom: 0%;
+    border-radius: 10px;
+}
+
+.lt_ground.active::before {
+    opacity: 1;
+}
+
+
+.lt_buslist {
+    height: 70vh;
+    overflow-y: auto;
+    padding: 0px 10px;
+    border-radius: 8px;
+}
+
+.lt_buslist::-webkit-scrollbar {
+    width: 8px;
+}
+
+.lt_buslist::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+.lt_buscard {
+    padding: 15px;
+    height: 100px;
+    width: 400px;
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.lt_driver_pic {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+    }
+}
+
+.lt_driver_details {
+    height: 100px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
+    .lt_bus_no {
+        font-size: 28px;
+        font-weight: 900;
+        height: 40px;
+    }
+
+    .lt_driver_name {
+        font-size: 14px;
+        height: 25px;
+    }
+
+    .lt_ground_name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        align-content: center;
+        font-size: 14px;
+        gap: 8px;
+    }
+}
+
+.lt_bus_but {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    /* border-left: 3px solid black; */
+    .lt_bus_status {
+        height: 50px;
+        width: 100px;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        align-content: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height: 33px;
+            width: 65px;
+            position: absolute;
+            animation: none;
+        }
+    }
+
+    .lt_get_directions {
+        height: 50px;
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .lt_get_directions_but {
+            line-height: 1rem;
+            height: 38px;
+            width: 85px;
+            background-color: var(--first);
+            border-radius: 30px;
+            color: white;
+            text-align: center;
+            align-content: center;
+            font-weight: 800;
+            overflow: hidden;
+            cursor: pointer;
+            font-size: 15px;
+            padding: 7px;
+        }
+    }
+
+    .lt_get_directions_but:hover img {
+        animation: left_to_right 3s linear 1;
+    }
+}
+
+@keyframes left_to_right {
+    from {
+        left: -70%;
+    }
+
+    to {
+        left: 120%;
+    }
+}
+
+@media only screen and (max-width: 1460px){
+    .lt_main_map{
+        width: 60vw;
+    }
+    .lt_cards{
+        width: 40vw;
+    }
+}
+@media only screen and (max-width: 1100px){
+    .lt_main_map{
+        width: 55vw;
+    }
+    .lt_cards{
+        width: 45vw;
+    }
+    .map-directions-container{
+        flex-direction: column;
+    }
+    .map-view,.directions-panel{
+        height: 50%;
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 975px){
+    .lt_main_map{
+        width: 50vw;
+    }
+    .lt_cards{
+        width: 50vw;
+    }
+}
+@media only screen and (max-width: 880px){
+    .lt_main_map{
+        width: 40vw;
+    }
+    .lt_cards{
+        width: 60vw;
+    }
+}
+@media only screen and (max-width: 770px){
+    .lt_main_map{
+        height: fit-content;
+    }
+    .lt_main{
+        flex-wrap: wrap;
+    }
+    .lt_main_map,.lt_cards{
+        width: 100vw;
+    }
+    .lt_search{
+        justify-content: center;
+        gap: 30px;
+    }
+}
+@media only screen and (max-width: 450px){
+    .lt_search{
+        gap: 20px;
+    }
+    .lt_inpbut,.lt_but{
+        height: 50px;
+        input{
+            height: 50px;
+        }
+    }
+    .lt_but{
+        width: 80px;
+    }
+    .lt_refresh{
+        height: 50px;
+        width: 50px;
+    }
+    .lt_buscard{
+        width: 360px;
+        padding:8px;
+        height: 120px;
+    }
+    .lt_driver_pic {
+        height: 90px;
+        width: 90px;
+        justify-content: center;
+        img {
+            height: 75px;
+            width: 75px;
+        }
+    }
+    .lt_driver_details{
+        gap: 10px;
+    }
+    .lt_bus_but{
+        .lt_get_directions{
+            .lt_get_directions_but{
+                height: 90%;
+                width: 100%;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 410px){
+    .lt_search{
+        gap: 10px;
+    }
+    .lt_inpbut{
+        width: 280px;
+        input{
+            width: 250px;
+        }
+    }
+    .lt_ground_details{
+        gap: 0px;
+        .lt_ground{
+            font-size: 14px;
+        }
+    }
+    .lt_buscard{
+        height: 160px;
+        width: 310px;
+        flex-wrap: wrap;
+    }
+    .lt_driver_details{
+        .lt_bus_no{
+            font-size: 22px;
+        }
+        .lt_driver_name{
+            font-size: 14px;
+        }
+    }
+    .lt_bus_but{
+        width: 100%;
+        height: 50px;
+        flex-direction: row;
+        .lt_bus_status{
+            img{
+                height: 85%;
+                width: 75%;
+            }
+            width: 40%;
+        }
+        .lt_get_directions{
+            width: 60%;
+            .lt_get_directions_but{
+                width: 100%;
+                height: 80%;
+                font-size: 18px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 370px){
+    .lt_ground_details{
+        justify-content: center;
+        gap: 10px;
+        .lt_ground{
+            font-size: 12px;
+        }
+    }
+}
+@media only screen and (max-width: 350px){
+    .lt_buscard{
+        width: 300px;
+    }
+    .lt_driver_pic {
+        height: 70px;
+        width: 70px;
+        img {
+            height: 65px;
+            width: 65px;
+        }
+    }
+    .lt_driver_details{
+        gap: 10px;
+    }
+}
