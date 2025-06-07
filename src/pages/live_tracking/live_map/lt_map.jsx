@@ -1,34 +1,39 @@
-'use client'
-
-import React, { useState, useEffect, useRef } from 'react'
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
-import './lt_map.css'
+import React, { useState, useEffect, useRef } from 'react';
+import { GoogleMap, useJsApiLoader, Marker, Circle } from '@react-google-maps/api';
+import './lt_map.css';
+import axios from 'axios';
+import { label } from 'three/webgpu';
 
 const containerStyle = {
     width: '100%',
     height: '500px'
-}
+};
 
 const initialCenter = {
-    lat: 17.088, 
+    lat: 17.088,
     lng: 82.069
-}
+};
 
 const mapOptions = {
     mapTypeId: 'satellite',
+    label:true,
     tilt: 0
-}
+};
 
 export default function BusTrackingMap() {
-    const [busPosition, setBusPosition] = useState(initialCenter)
-    const [destinationPosition, setDestinationPosition] = useState(null)
-    const [map, setMap] = useState(null)
-    const markerRef = useRef(null)
+    const [busPosition, setBusPosition] = useState(initialCenter);
+    const [destinationPosition, setDestinationPosition] = useState(null);
+    const [path, setPath] = useState([]);
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [map, setMap] = useState(null);
+    const markerRef = useRef(null);
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: import.meta.env.VITE_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
-    })
+        googleMapsApiKey: "AIzaSyDE_Mn98wGt9XeCA8GUb02FL8NKuuL4ttU"
+    });
 
     const destinationIcon = isLoaded ? {
         path: window.google.maps.SymbolPath.CIRCLE,
@@ -37,67 +42,91 @@ export default function BusTrackingMap() {
         fillOpacity: 1,
         strokeWeight: 2,
         strokeColor: '#FFFFFF',
-    } : null
+    } : null;
+
+    const fetchBusData = async () => {
+        try {
+            const response = await axios.get("http://210.212.210.81:3000");
+            console.log(response.data);
+
+            const vehicleId = "1";
+            const filteredData = response.data.filter(item => item.vehicle_id == vehicleId);
+
+            if (filteredData.length > 0) {
+                const lastEntry = filteredData[filteredData.length - 1];
+                setBusPosition({
+                    lat: parseFloat(lastEntry.latitude),
+                    lng: parseFloat(lastEntry.longitude)
+                });
+
+                setPath(pathArray);
+            } else {
+                console.log("No data available for the vehicle.");
+            }
+        } catch (error) {
+            console.error("Error fetching data", error);
+            setError("Error fetching data");
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
-        if (isLoaded) {
-            const path = [
-                { lat: 17.087499905563725, lng: 82.06813014782053 },
-                { lat: 17.08774998950085, lng: 82.06831509552883 },
-                { lat: 17.088056126277426, lng: 82.06845944495969 },
-                { lat: 17.08828465058568, lng: 82.06857221795254 },
-                { lat: 17.088530421698824, lng: 82.06860379439053 },
-                { lat: 17.088823621908162, lng: 82.06882934038583 },
-                { lat: 17.089069392316205, lng: 82.06894211338525 },
-                { lat: 17.089401397435108, lng: 82.06912255017664 },
-                { lat: 17.089638543593637, lng: 82.06928043237625 },
-                { lat: 17.089923118575054, lng: 82.06945635824509 },
-                { lat: 17.089944677268065, lng: 82.06923081225938 },
-                { lat: 17.08983257203719, lng: 82.0687977639668 },
-                { lat: 17.089711843251603, lng: 82.06850906510509 },
-                { lat: 17.089539373422237, lng: 82.0684459122291 },
-            ]
-            let currentIndex = 0
+        // Initial fetch
+        fetchBusData();
+
+        // Set up interval to fetch data every second
+        const intervalId = setInterval(fetchBusData, 1000);
+
+        // Cleanup interval on component unmount
+        return () => clearInterval(intervalId);
+    }, []);
+
+    useEffect(() => {
+        if (path.length > 0) {
+            let currentIndex = 0;
 
             const interval = setInterval(() => {
                 if (currentIndex < path.length - 1) {
-                    currentIndex++
-                    setBusPosition(path[currentIndex])
-                    setDestinationPosition(path[currentIndex + 1] || path[0])
+                    currentIndex++;
                 } else {
-                    currentIndex = 0
-                    setBusPosition(path[currentIndex])
-                    setDestinationPosition(path[currentIndex + 1])
+                    currentIndex = 0;
                 }
-            }, 2000)
+                setBusPosition(path[currentIndex]);
+                setDestinationPosition(path[currentIndex + 1] || path[0]);
+            }, 200);
 
-            return () => clearInterval(interval)
+            return () => clearInterval(interval);
         }
-    }, [isLoaded])
+    }, [path]);
 
     useEffect(() => {
-        if (map && markerRef.current) {
-            map.panTo(busPosition)
+        if (map && busPosition) {
+            map.panTo(busPosition);
         }
-    }, [busPosition, map])
+    }, [busPosition, map]);
 
-    const onLoad = React.useCallback(function callback(map) {
-        setMap(map)
-    }, [])
+    const onLoad = React.useCallback(map => {
+        setMap(map);
+    }, []);
 
-    const onUnmount = React.useCallback(function callback(map) {
-        setMap(null)
-    }, [])
+    const onUnmount = React.useCallback(() => {
+        setMap(null);
+    }, []);
+
+    if (isLoading) {
+        return <div className="text-center p-4">Loading...</div>;
+    }
 
     return isLoaded ? (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4 text-center">Live Bus Tracking</h1>
             <div className="bg-white shadow-md rounded-lg overflow-hidden">
                 <div className="p-4">
-                    <p className="text-gray-700 mb-2" style={{ alignContent: 'center', textAlign: 'center' }}>
+                    <p className="text-gray-700 mb-2 text-center">
                         Current Bus Location:
                     </p>
-                    <p className="text-gray-900 font-semibold" style={{ alignContent: 'center', textAlign: 'center' }}>
+                    <p className="text-gray-900 font-semibold text-center">
                         Latitude: {busPosition.lat.toFixed(6)}, Longitude: {busPosition.lng.toFixed(6)}
                     </p>
                 </div>
@@ -111,16 +140,25 @@ export default function BusTrackingMap() {
                             onLoad={onLoad}
                             onUnmount={onUnmount}
                         >
+                            {/* Bus Current Location Indicator */}
+                            <Circle
+                                center={busPosition}
+                                radius={7} // Small radius to create a dot
+                                options={{
+                                    strokeOpacity: 1,
+                                    strokeWeight: 2,
+                                    fillColor: "red",
+                                    fillOpacity: 1
+                                }}
+                            />
+
                             {destinationPosition && destinationIcon && (
-                                <Marker
-                                    position={destinationPosition}
-                                    icon={destinationIcon}
-                                />
+                                <Marker position={destinationPosition} icon={destinationIcon} />
                             )}
                         </GoogleMap>
                     </div>
                 </div>
             </div>
         </div>
-    ) : <div className="text-center p-4">Loading...</div>
+    ) : null;
 }

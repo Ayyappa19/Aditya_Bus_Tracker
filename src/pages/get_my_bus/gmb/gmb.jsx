@@ -9,7 +9,7 @@ import axios from 'axios';
 import { Loader } from '@googlemaps/js-api-loader';
 
 // Replace with your actual API key
-const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+const GOOGLE_MAPS_API_KEY = "AIzaSyDE_Mn98wGt9XeCA8GUb02FL8NKuuL4ttU" ;
 
 function GetMyBus() {
     const [activeGround, setActiveGround] = useState(null);
@@ -39,7 +39,7 @@ function GetMyBus() {
                 },
                 (error) => {
                     console.error("Error getting user location: ", error);
-                    // Default to a specific location if unable to get user's location
+                    
                     const defaultLocation = { lat: 17.387140, lng: 78.491684 };
                     setUserLocation(defaultLocation);
                     initializeMap(defaultLocation);

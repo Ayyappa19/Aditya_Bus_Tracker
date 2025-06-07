@@ -11,10 +11,12 @@ import OtpInput from './onotp';
 import './login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { BACKEND_URL, API_PORT } from '../../config';
 
 
 function Login() {
-  const api_port=import.meta.env.VITE_NEXT_PUBLIC_PORT;
+  // const api_port=import.meta.env.VITE_NEXT_PUBLIC_PORT;
+  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [isForgotPasswordMode, setIsForgotPasswordMode] = useState(false);
@@ -154,7 +156,7 @@ function Login() {
       setShowRightImage(true);
       setAnimateRightImage(true);
       const myEmail = { email: formValues.email }
-      axios.post("http://localhost:9000/send-mail", myEmail)
+      axios.post(`${BACKEND_URL}/send-mail`, myEmail)
         .then(success => {
           console.log("OTP Sent Successfully")
         })
@@ -208,7 +210,7 @@ function Login() {
     else {
 
       const upd = { email: formValues.email1, password: formValues.password2 }
-      axios.post("http://localhost:9000/change-password", upd)
+      axios.post(`${BACKEND_URL}/change-password`, upd)
         .then(succ => {
           setIsSignUpMode(false);
           setIsForgotPasswordMode(false);
@@ -251,9 +253,9 @@ function Login() {
     }
     else {
       const checkMail = { email: formValues.email1 }
-      axios.post("http://localhost:9000/check-mail", checkMail)
+      axios.post(`${BACKEND_URL}/check-mail`, checkMail)
         .then(succ => {
-          succ.data ? axios.post("http://localhost:9000/send-mail", checkMail)
+          succ.data ? axios.post(`${BACKEND_URL}/send-mail`, checkMail)
             .then(success => {
               console.log("OTP Sent Successfully")
               setShowOtpInput(true);
@@ -287,7 +289,7 @@ function Login() {
 
   const handleChangePassword = (e) => {
     e.preventDefault();
-    axios.get("http://localhost:9000/otp-validation")
+    axios.get(`${BACKEND_URL}/otp-validation`)
       .then(otpVerify => {
         console.log(otpVerify)
         console.log(inpOTP2)
@@ -317,7 +319,7 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault()
     const myData = { rollNumber: formValues.rollNumber, password: formValues.password }
-    axios.post("http://localhost:9000/check-user-data", myData)
+    axios.post(`${BACKEND_URL}/check-user-data`, myData)
       .then(succ => {
         succ.data ? navigate('/home-page') : setErrorMessage3("Invalid Roll Number and Password")
       })
@@ -328,11 +330,11 @@ function Login() {
 
   const handleVerify = (e) => {
     e.preventDefault()
-    axios.get("http://localhost:9000/otp-validation")
+    axios.get(`${BACKEND_URL}/otp-validation`)
       .then(otpVerify => {
         if (otpVerify.data == inpOTP) {
           const myData = { rollNumber: formValues.rollNumber1, password: formValues.password1, email: formValues.email }
-          axios.post("http://localhost:9000/signup-data-insertion", myData)
+          axios.post(`${BACKEND_URL}/signup-data-insertion`, myData)
             .then(suc => {
               console.log("New Account Created")
             })
